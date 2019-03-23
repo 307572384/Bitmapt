@@ -1,6 +1,5 @@
 package com.example.cxc.bitmapt;
 
-import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,9 +14,9 @@ import java.io.InputStream;
 
 //图片查看器
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-	String[]     imageArray   = null;
+	String[]     imageArray    = null;
 	AssetManager assetsManager = null;
-	int          currentImgNo = 0;
+	int          currentImgNo  = 0;
 	private Button    next;
 	private ImageView image;
 
@@ -36,51 +35,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		next.setOnClickListener(this);
 	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.next:
-				try
-				{
+				try {
 					assetsManager = getAssets();
 					//获取/assets/目录下所有文件
 					imageArray = assetsManager.list("");
-				}
-				catch (IOException e)
-				{
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				//为bn按钮绑定事件监听器，该监听器将会查看下一张图片
-				next.setOnClickListener(new View.OnClickListener()
-				{
+				next.setOnClickListener(new View.OnClickListener() {
 					@Override
-					public void onClick(View sources)
-					{
+					public void onClick(View sources) {
 						//如果发生数组越界
-						if (currentImgNo >= imageArray.length)
-						{
+						if (currentImgNo >= imageArray.length) {
 							currentImgNo = 0;
 						}
 						//找到下一个图片文件
 						while (!imageArray[currentImgNo].endsWith(".png")
 								&& !imageArray[currentImgNo].endsWith(".jpg")
-								&& !imageArray[currentImgNo].endsWith(".gif"))
-						{
+								&& !imageArray[currentImgNo].endsWith(".gif")) {
 							currentImgNo++;
 							//如果已发生数组越界
-							if (currentImgNo >= imageArray.length)
-							{
+							if (currentImgNo >= imageArray.length) {
 								currentImgNo = 0;
 							}
 						}
 						InputStream assetFile = null;
-						try
-						{
+						try {
 							//打开指定资源对应的输入流
 							assetFile = assetsManager.open(imageArray[currentImgNo++]);
-						}
-						catch (IOException e)
-						{
+						} catch (IOException e) {
 							e.printStackTrace();
 						}
 						BitmapDrawable bitmapDrawable = (BitmapDrawable) image
