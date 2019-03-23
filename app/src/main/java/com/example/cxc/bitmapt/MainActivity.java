@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				});
 				break;
 			case R.id.pstlayout:
-				Intent refintent = new Intent(MainActivity.this,RefreshActivity.class);
+				Intent refintent = new Intent(MainActivity.this, RefreshActivity.class);
 				startActivity(refintent);
 				break;
 		}
