@@ -12,6 +12,7 @@ import android.view.View;
 
 public class ViewDrawer extends View
 {
+
 	int  colorSwitch = 0;
 	int  y = 300;
 	public ViewDrawer(Context context) {
