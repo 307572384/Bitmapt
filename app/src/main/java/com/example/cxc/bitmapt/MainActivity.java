@@ -1,5 +1,6 @@
 package com.example.cxc.bitmapt;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	int          currentImgNo  = 0;
 	private Button    next;
 	private ImageView image;
+	private Button    pstlayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		image = (ImageView) findViewById(R.id.image);
 
 		next.setOnClickListener(this);
+		pstlayout = (Button) findViewById(R.id.pstlayout);
+		pstlayout.setOnClickListener(this);
 	}
 
 	@Override
@@ -85,6 +89,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 					}
 				});
 				break;
+			case R.id.pstlayout:
+				Intent refintent = new Intent(MainActivity.this,RefreshActivity.class);
+				startActivity(refintent);
+				break;
 		}
 	}
+
 }
